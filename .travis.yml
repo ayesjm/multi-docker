@@ -9,14 +9,14 @@ script:
    - docker run jlnzllc/react-test npm test -- --coverage
 
 after_success:
-   - docker build -t jlnzllc/multi-client ./client
-   - docker build -t jlnzllc/mult-nginx ./nginx
-   - docker build -t jlnzllc/multi-server ./server
-   - docker build -t jlnzllc/multi-worker ./worker
+   - docker build -t ayesjm/multi-client ./client
+   - docker build -t ayesjm/mult-nginx ./nginx
+   - docker build -t ayesjm/multi-server ./server
+   - docker build -t ayesjm/multi-worker ./worker
 # Log in to docker CLI
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-   - docker push jlnzllc/multi-client
-   - docker push jlnzllc/multi-nginx
-   - docker push jlnzllc/multi-server
-   - docker push jlnzllc/multi-worker
+   - docker push ayesjm/multi-client
+   - docker push ayesjm/multi-nginx
+   - docker push ayesjm/multi-server
+   - docker push ayesjm/multi-worker
