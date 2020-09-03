@@ -5,20 +5,20 @@ services:
    - docker
 
   before_install: 
-   - docker build -t ayesjm/react-test -f ./client/Dockerfile.dev ./client
+   - docker build -t jlnzllc/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-   -  docker run -e CI=true ayesjm/react-test npm test
+   -  docker run -e CI=true jlnzllc/react-test npm test
 
 after_success:
-   - docker build -t ayesjm/multi-client ./client
-   - docker build -t ayesjm/multi-nginx ./nginx
-   - docker build -t ayesjm/multi-server ./server
-   - docker build -t ayesjm/multi-worker ./worker
+   - docker build -t jlnzllc/multi-client ./client
+   - docker build -t jlnzllc/multi-nginx ./nginx
+   - docker build -t jlnzllc/multi-server ./server
+   - docker build -t jlnzllc/multi-worker ./worker
 # Log in to docker CLI
    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
-   - docker push ayesjm/multi-client
-   - docker push ayesjm/multi-nginx
-   - docker push ayesjm/multi-server
-   - docker push ayesjm/multi-worker
+   - docker push jlnzllc/multi-client
+   - docker push jlnzllc/multi-nginx
+   - docker push jlnzllc/multi-server
+   - docker push jlnzllc/multi-worker
